@@ -14,12 +14,14 @@ const apexGameModifications =
       'Raise Sensitivity up to 10 for one match (Remember to write down your current sensitivity!)',
       'Cannot open doors. (Kicking doors down is allowed)',
       'Must attempt a finisher after each player you knock down',
+      'Switch loadouts with the people you kill. (Player who gets the kill credit)',
     ];
 
 const spinTheWheel = function() {
   const num = utils.randomNumber(0, apexGameModifications.length) - 1;
   return apexGameModifications[num];
 };
+
 
 const listWheel = function() {
   let listFormatted = '';
