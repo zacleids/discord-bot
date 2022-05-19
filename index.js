@@ -96,6 +96,9 @@ function handleMessage(message) {
     case 'spin':
       res = wheelOfApex.spinTheWheel();
       break;
+    case 'list_wheel':
+      res = wheelOfApex.listWheel();
+      break;
   }
 
   if (res) {
@@ -122,6 +125,9 @@ const commands = function() {
 !commands - see a list of the commands
 !rules - see the apex constitution rules
 !r/!roll/!dice - roll some dice i.e. 2d6, 1d20 + 3
+!spin/!spin_the_wheel - Spins the Wheel of Apex, generating a random game modification. 
+!list_wheel - Lists the different modifications in the apex wheel
+
 
 any command that has the word 'random' can also use 'rand' or 'r' instead
   `;

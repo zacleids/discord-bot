@@ -177,3 +177,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+/.vs/discord-bot/FileContentIndex
+/.vs/discord-bot/v17
+/.vs/discord-bot/config
+*.json
+/.vs
