@@ -23,6 +23,7 @@ const spinTheWheel = function() {
   return apexGameModifications[num];
 };
 
+
 const listWheel = function() {
   let listFormatted = '';
   let i = 1;
