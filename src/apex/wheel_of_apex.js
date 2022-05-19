@@ -13,8 +13,10 @@ const apexGameModifications =
       'A random team is generated. Players must play one of the generated Legends',
       'Raise Sensitivity up to 10 for one match (Remember to write down your current sensitivity!)',
       'Cannot open doors. (Kicking doors down is allowed)',
-      'Must attempt a finisher after each player you knock down',
+      'Must attempt a finisher after each player you knock down'
     ];
+
+let apexModificationsNoReplacement = apexGameModifications.slice();
 
 const spinTheWheel = function() {
   const num = utils.randomNumber(0, apexGameModifications.length) - 1;
@@ -32,7 +34,33 @@ const listWheel = function() {
   return listFormatted;
 };
 
+const spinTheWheelNoReplacement = function() {
+
+  const num = utils.randomNumber(0, apexModificationsNoReplacement.length) - 1;
+  let modification = apexModificationsNoReplacement[num];
+  apexModificationsNoReplacement.splice(num, 1);
+
+  if (apexModificationsNoReplacement.length === 0) {
+    modification += ' [All Modifications drawn, Refilling Wheel]';
+    apexModificationsNoReplacement = apexGameModifications.slice();
+  }
+  return modification;
+};
+
+const listWheelNoReplacement = function() {
+  let listFormatted = 'Remaining Modifications:\n';
+  let i = 1;
+  for (const modification of apexModificationsNoReplacement) {
+    listFormatted += ((i++) + ': ');
+    listFormatted += modification;
+    listFormatted += '\n';
+  }
+  return listFormatted;
+};
+
 module.exports = {
   spinTheWheel,
-  listWheel
+  listWheel,
+  spinTheWheelNoReplacement,
+  listWheelNoReplacement
 };

@@ -87,17 +87,31 @@ function handleMessage(message) {
     case 'off_the_grid':
       res = offTheGrid();
       break;
+    case 'off_the_grid_uwu':
+      res = offTheGridUwu();
+      break;
     case 'r':
     case 'roll':
     case 'dice':
       res = diceCommands.diceRollCommand(args);
       break;
     case 'spin_the_wheel':
+    case 'spin_wheel':
     case 'spin':
       res = wheelOfApex.spinTheWheel();
       break;
     case 'list_wheel':
       res = wheelOfApex.listWheel();
+      break;
+    case 'spin_the_wheel_nr':
+    case 'spin_wheel_nr':
+    case 'spin_nr':
+    case 'spinnr':
+      res = wheelOfApex.spinTheWheelNoReplacement();
+      break;
+    case 'list_wheel_nr':
+    case 'list_nr':
+      res = wheelOfApex.listWheelNoReplacement();
       break;
   }
 
@@ -114,6 +128,7 @@ const ping = function(message) {
 const commands = function() {
   return `
 !apex_night - roll a d3 to determine which player rotates out
+!double_apex_night/!2_apex_night - Roll a d3 twice to determine which two players rotate out
 !random_legend - pick a random legend
 !random_class - pick a random character class. 'Offensive', 'Defensive', 'Recon', or 'Support'
 !random_team - pick a random team of 3 legends
@@ -122,14 +137,14 @@ const commands = function() {
 !random_weapon_type - pick a random weapon type Sub Machine, Sniper, Marksman, etc.
 !random_grenade - pick a random grenade. 'Arc Star', 'Frag Grenade', 'Thermite Grenade'
 !off_the_grid - learn about cryptos passive idea
+!off_the_grid_uwu - weawn abouwt cwyptos passive idea
 !commands - see a list of the commands
 !rules - see the apex constitution rules
 !r/!roll/!dice - roll some dice i.e. 2d6, 1d20 + 3
 !spin/!spin_the_wheel - Spins the Wheel of Apex, generating a random game modification. 
-!list_wheel - Lists the different modifications in the apex wheel
-
-
-any command that has the word 'random' can also use 'rand' or 'r' instead
+!list_wheel - Lists the different modifications in the Wheel of Apex.
+!spin_the_wheel_nr/!spin_wheel_nr/!spin_nr/!spinnr: Spins the Wheel of Apex, generating a random game modification without replacement so that repeats do not occur until the list has been emptied. 
+!list_wheel_nr/!list_nr - Lists remaining modifications in the No Replacement Wheel of Apex.
   `;
 };
 
@@ -160,6 +175,10 @@ const doubleApexNight = function() {
 
 const offTheGrid = function() {
   return 'ok so I got this idea for a crypto buff called "off the grid". What it does is that he wont get scanned by enemy scans and he wont be revealed to enemies because he will have this passive called off the grid which will protect him from enemy scans so when he gets scanned he technically doesnt get scanned because he will have off the grid passive that will protect him from the scans and since he is hacker I think he should have it have to protect him from enemy scans and I would call it off the grid and it would be his passive that would make him unscannable by enemy scans because it would be his passive and it would be called off the grid so when he gets scanned the enemies wont see him because he will have the passive ability that will protect him from the scans I believe crypto should have this ability because there is seer and respawn wont delete him so I believe they should at least give crypto ability that will make him completely immune to seer and bloodhound abilities and call it off the grid (thats the off the grid passive I was talking about)';
+};
+
+const offTheGridUwu = function() {
+  return 'ok so i got thiws idea fow a cwypto buff cawwed "off the gwid". Whawt iwt does iws thawt he wont get scanned by enemy scans awnd he wont be weveawed tuwu enemies because he wiww have thiws passive cawwed off the gwid which wiww pwotect him fwom enemy scans so whewn he gets scanned he technicawwy doesnt get scanned because he wiww have off the gwid passive thawt wiww pwotect him fwom the scans awnd since he iws hackew i think he shouwd have iwt have tuwu pwotect him fwom enemy scans awnd i wouwd caww iwt off the gwid awnd iwt wouwd be hiws passive thawt wouwd make him unscannabwe by enemy scans because iwt wouwd be hiws passive awnd iwt wouwd be cawwed off the gwid so whewn he gets scanned the enemies wont see him because he wiww have the passive abiwity thawt wiww pwotect him fwom the scans i bewieve cwypto shouwd have thiws abiwity because thewe iws seew awnd wespawn wont dewete him so i bewieve they shouwd at weast give cwypto abiwity thawt wiww make him compwetewy immune tuwu seew awnd bwoodhound abiwities awnd caww iwt off the gwid (thats the off the gwid passive i was tawking abouwt)';
 };
 
 const rules = function() {
