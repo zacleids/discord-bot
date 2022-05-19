@@ -7,6 +7,7 @@ const utils = require('./src/utils');
 // commands
 const apexLegendCommands = require('./src/apex/legend');
 const apexWeaponCommands = require('./src/apex/weapon');
+const wheelOfApex = require('./src/apex/wheel_of_apex');
 const diceCommands = require('./src/dice');
 
 // https://www.digitalocean.com/community/tutorials/how-to-build-a-discord-bot-with-node-js
@@ -90,6 +91,10 @@ function handleMessage(message) {
     case 'roll':
     case 'dice':
       res = diceCommands.diceRollCommand(args);
+      break;
+    case 'spin_the_wheel':
+    case 'spin':
+      res = wheelOfApex.spinTheWheel();
       break;
   }
 
