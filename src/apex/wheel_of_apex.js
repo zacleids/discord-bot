@@ -13,7 +13,7 @@ const apexGameModifications =
       'A random team is generated. Players must play one of the generated Legends',
       'Raise Sensitivity up to 10 for one match (Remember to write down your current sensitivity!)',
       'Cannot open doors. (Kicking doors down is allowed)',
-      'Must attempt a finisher after each player you knock down'
+      'Must attempt a finisher after each player you knock down',
     ];
 
 const spinTheWheel = function() {
