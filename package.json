@@ -1,0 +1,35 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "a discord bot for gaming and utility commands",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
+    "postinstall": "husky install"
+  },
+  "author": "Zac Leids",
+  "license": "NPOSL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com:zacleids/discord-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com:zacleids/discord-bot/issues"
+  },
+  "homepage": "https://github.com/zacleids/discord-bot",
+  "engines": {
+    "node": ">= 16.0.0"
+  },
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "husky": "^8.0.1"
+  }
+}
