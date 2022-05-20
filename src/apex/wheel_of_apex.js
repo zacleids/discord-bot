@@ -15,7 +15,6 @@ const apexGameModifications =
       'Cannot open doors. (Kicking doors down is allowed)',
       'Must attempt a finisher after each player you knock down',
       'Switch loadouts with the people you kill. (Player who gets the kill credit)',
-      'Hipfire Only'
     ];
 
 const spinTheWheel = function() {
@@ -23,6 +22,19 @@ const spinTheWheel = function() {
   return apexGameModifications[num];
 };
 
+
+const listWheel = function() {
+  let listFormatted = '';
+  let i = 1;
+  for (const modification of apexGameModifications) {
+    listFormatted += ((i++) + ': ');
+    listFormatted += modification;
+    listFormatted += '\n';
+  }
+  return listFormatted;
+};
+
 module.exports = {
-  spinTheWheel
+  spinTheWheel,
+  listWheel
 };
