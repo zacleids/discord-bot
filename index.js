@@ -114,6 +114,7 @@ const ping = function(message) {
 const commands = function() {
   return `
 !apex_night - roll a d3 to determine which player rotates out
+!double_apex_night - determine which 2 players rotate out
 !random_legend - pick a random legend
 !random_class - pick a random character class. 'Offensive', 'Defensive', 'Recon', or 'Support'
 !random_team - pick a random team of 3 legends
