@@ -145,6 +145,9 @@ const commands = function() {
 !list_wheel - Lists the different modifications in the Wheel of Apex.
 !spin_the_wheel_nr/!spin_wheel_nr/!spin_nr/!spinnr: Spins the Wheel of Apex, generating a random game modification without replacement so that repeats do not occur until the list has been emptied. 
 !list_wheel_nr/!list_nr - Lists remaining modifications in the No Replacement Wheel of Apex.
+
+
+any command that has the word 'random' can also use 'rand' or 'r' instead
   `;
 };
 
