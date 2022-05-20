@@ -13,7 +13,11 @@ const apexGameModifications =
       'A random team is generated. Players must play one of the generated Legends',
       'Raise Sensitivity up to 10 for one match (Remember to write down your current sensitivity!)',
       'Cannot open doors. (Kicking doors down is allowed)',
-      'Must attempt a finisher after each player you knock down'
+      'Must attempt a finisher after each player you knock down',
+      'Have to attack everyone you see once you land, no matter what. No running from fights.',
+      'Can\'t loot from deathboxes',
+      'Choose between the first 5 weapons you encounter, no other weapons are allowed'
+
     ];
 
 let apexModificationsNoReplacement = apexGameModifications.slice();
