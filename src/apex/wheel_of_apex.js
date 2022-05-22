@@ -1,8 +1,10 @@
+const _ = require('lodash');
+
 const utils = require('../utils');
 
 const apexGameModifications =
     [
-      'Spin twice and do Both! (If this is rolled again, Ignore and reroll)',
+      'Spin twice and do Both!',
       'On an individual basis, each player must choose an unusual legend or a legend that one would not normally choose.',
       'A random gun type is selected. Players must hold onto the first of that gun they come across',
       'A Random Ammo Type is Chosen, players in the must carry a gun of that ammo type to the end of that game',
@@ -20,47 +22,64 @@ const apexGameModifications =
 
     ];
 
-let apexModificationsNoReplacement = apexGameModifications.slice();
+let apexModificationsNoReplacement = _.clone(apexGameModifications);
 
 const spinTheWheel = function() {
   const num = utils.randomNumber(0, apexGameModifications.length) - 1;
+
+  // double spin was selected
+  if (num === 0) {
+    const listClone = _.clone(apexGameModifications);
+    listClone.shift();
+    const num1 = utils.randomNumber(0, listClone.length) - 1;
+    const mod1 = listClone.splice(num1, 1);
+    const num2 = utils.randomNumber(0, listClone.length) - 1;
+    const mod2 = listClone.splice(num2, 1);
+    return `
+${apexGameModifications[num]}\n
+${mod1}
+**AND**
+${mod2}
+    `;
+  }
+
   return apexGameModifications[num];
 };
 
-
-const listWheel = function() {
-  let listFormatted = '';
+/**
+ *
+ * @param {string} header
+ * @param {string[]} arr
+ */
+const formatList = function(header = '', arr) {
+  let listFormatted = header;
   let i = 1;
-  for (const modification of apexGameModifications) {
+  for (const value of arr) {
     listFormatted += ((i++) + ': ');
-    listFormatted += modification;
+    listFormatted += value;
     listFormatted += '\n';
   }
   return listFormatted;
 };
 
-const spinTheWheelNoReplacement = function() {
+const listWheel = function() {
+  return formatList('', apexGameModifications);
+};
 
+const spinTheWheelNoReplacement = function() {
   const num = utils.randomNumber(0, apexModificationsNoReplacement.length) - 1;
   let modification = apexModificationsNoReplacement[num];
   apexModificationsNoReplacement.splice(num, 1);
 
   if (apexModificationsNoReplacement.length === 0) {
     modification += ' [All Modifications drawn, Refilling Wheel]';
-    apexModificationsNoReplacement = apexGameModifications.slice();
+    apexModificationsNoReplacement = _.clone(apexGameModifications);
   }
   return modification;
 };
 
 const listWheelNoReplacement = function() {
-  let listFormatted = 'Remaining Modifications:\n';
-  let i = 1;
-  for (const modification of apexModificationsNoReplacement) {
-    listFormatted += ((i++) + ': ');
-    listFormatted += modification;
-    listFormatted += '\n';
-  }
-  return listFormatted;
+  return formatList('Remaining Modifications:\n', apexModificationsNoReplacement);
 };
 
 module.exports = {
