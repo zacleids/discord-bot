@@ -88,6 +88,7 @@ function handleMessage(message) {
       res = offTheGrid();
       break;
     case 'off_the_grid_uwu':
+    case 'off_the_gwid':
       res = offTheGridUwu();
       break;
     case 'r':
@@ -137,7 +138,7 @@ const commands = function() {
 !random_weapon_type - pick a random weapon type Sub Machine, Sniper, Marksman, etc.
 !random_grenade - pick a random grenade. 'Arc Star', 'Frag Grenade', 'Thermite Grenade'
 !off_the_grid - learn about cryptos passive idea
-!off_the_grid_uwu - weawn abouwt cwyptos passive idea
+!off_the_grid_uwu/!off_the_gwid - weawn abouwt cwyptos passive idea
 !commands - see a list of the commands
 !rules - see the apex constitution rules
 !r/!roll/!dice - roll some dice i.e. 2d6, 1d20 + 3
