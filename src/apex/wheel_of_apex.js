@@ -6,20 +6,20 @@ const apexGameModifications =
     [
       'Spin twice and do Both!',
       'On an individual basis, each player must choose an unusual legend or a legend that one would not normally choose.',
-      'A random gun type is selected. Players must hold onto the first of that gun they come across',
-      'A Random Ammo Type is Chosen, players in the must carry a gun of that ammo type to the end of that game',
+      'A random gun type is selected. Players must hold onto the first of that gun they come across (!random_weapon_type)',
+      'A Random Ammo Type is Chosen, players in the must carry a gun of that ammo type to the end of that game (!random_ammo)',
       'Players must speak like their chosen legend during the game',
       'After every kill, you must swap one of your guns.',
       'Each player must collect as many grenades as they can, and they must use all of their grenades before using their guns.',
-      'All players must randomly select a legend',
-      'A random team is generated. Players must play one of the generated Legends',
+      'All players must randomly select a legend (!random_legend)',
+      'A random team is generated. Players must play one of the generated Legends (!random_team)',
       'Raise Sensitivity up to 10 for one match (Remember to write down your current sensitivity!)',
       'Cannot open doors. (Kicking doors down is allowed)',
       'Must attempt a finisher after each player you knock down',
       'Have to attack everyone you see once you land, no matter what. No running from fights.',
       'Can\'t loot from deathboxes',
-      'Choose between the first 5 weapons you encounter, no other weapons are allowed'
-
+      'Choose between the first 5 weapons you encounter, no other weapons are allowed',
+      'A person is designated as the lord. The other two members must follow the calls of the lord as well as say "yes milord." The squires must do their best to defend the lord.  The lord is designated randomly or by group agreement.'
     ];
 
 let apexModificationsNoReplacement = _.clone(apexGameModifications);
