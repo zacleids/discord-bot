@@ -4,7 +4,7 @@ const utils = require('../utils');
 const apexLegendsCharacters = {
   Offensive: ['Bangalore', 'Wraith', 'Mirage', 'Octane', 'Revenant', 'Horizon', 'Fuse', 'Ash', 'Mad Maggie'],
   Defensive: ['Gibraltar', 'Caustic', 'Wattson', 'Rampart', 'Newcastle'],
-  Recon: ['Bloodhound', 'Pathfinder', 'Crypto', 'Valkyrie', 'Seer'],
+  Recon: ['Bloodhound', 'Pathfinder', 'Crypto', 'Valkyrie', 'Seer', 'Vantage'],
   Support: ['Lifeline', 'Loba']
 };
 const apexClasses = Object.keys(apexLegendsCharacters);
