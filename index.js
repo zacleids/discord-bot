@@ -6,6 +6,7 @@ const utils = require('./src/utils');
 
 // commands
 const apexLegendCommands = require('./src/apex/legend');
+const apexMapCommands = require('./src/apex/map');
 const apexWeaponCommands = require('./src/apex/weapon');
 const wheelOfApex = require('./src/apex/wheel_of_apex');
 const diceCommands = require('./src/dice');
@@ -31,89 +32,102 @@ function handleMessage(message) {
 
   let res = undefined;
 
-  switch (command) {
-    case 'ping':
-      res = ping(message);
-      break;
-    case 'command':
-    case 'commands':
-      res = commands();
-      break;
-    case 'rules':
-      res = rules();
-      break;
-    case 'apex_night':
-      res = apexNight(message);
-      break;
-    case 'double_apex_night':
-    case '2_apex_night':
-      res = doubleApexNight(message);
-      break;
-    case 'r_legend':
-    case 'rand_legend':
-    case 'random_legend':
-      res = apexLegendCommands.randomLegend();
-      break;
-    case 'r_class':
-    case 'rand_class':
-    case 'random_class':
-      res = apexLegendCommands.randomClass();
-      break;
-    case 'r_team':
-    case 'rand_team':
-    case 'random_team':
-      res = apexLegendCommands.randomTeam();
-      break;
-    case 'r_weapon':
-    case 'rand_weapon':
-    case 'random_weapon':
-      res = apexWeaponCommands.randomWeapon();
-      break;
-    case 'r_ammo':
-    case 'rand_ammo':
-    case 'random_ammo':
-      res = apexWeaponCommands.randomWeaponAmmo();
-      break;
-    case 'r_weapon_type':
-    case 'rand_weapon_type':
-    case 'random_weapon_type':
-      res = apexWeaponCommands.randomWeaponType();
-      break;
-    case 'r_grenade':
-    case 'rand_grenade':
-    case 'random_grenade':
-      res = apexWeaponCommands.randomGrenade();
-      break;
-    case 'off_the_grid':
-      res = offTheGrid();
-      break;
-    case 'off_the_grid_uwu':
-    case 'off_the_gwid':
-      res = offTheGridUwu();
-      break;
-    case 'r':
-    case 'roll':
-    case 'dice':
-      res = diceCommands.diceRollCommand(args);
-      break;
-    case 'spin_the_wheel':
-    case 'spin_wheel':
-    case 'spin':
-      res = wheelOfApex.spinTheWheel();
-      break;
-    case 'list_wheel':
-      res = wheelOfApex.listWheel();
-      break;
-    case 'spin_the_wheel_nr':
-    case 'spin_wheel_nr':
-    case 'spin_nr':
-    case 'spinnr':
-      res = wheelOfApex.spinTheWheelNoReplacement();
-      break;
-    case 'list_wheel_nr':
-    case 'list_nr':
-      res = wheelOfApex.listWheelNoReplacement();
-      break;
+  try {
+
+    switch (command) {
+      case 'ping':
+        res = ping(message);
+        break;
+      case 'command':
+      case 'commands':
+        res = commands();
+        break;
+      case 'rules':
+        res = rules();
+        break;
+      case 'apex_night':
+        res = apexNight(message);
+        break;
+      case 'double_apex_night':
+      case '2_apex_night':
+        res = doubleApexNight(message);
+        break;
+      case 'r_legend':
+      case 'rand_legend':
+      case 'random_legend':
+        res = apexLegendCommands.randomLegend();
+        break;
+      case 'r_class':
+      case 'rand_class':
+      case 'random_class':
+        res = apexLegendCommands.randomClass();
+        break;
+      case 'r_team':
+      case 'rand_team':
+      case 'random_team':
+        res = apexLegendCommands.randomTeam();
+        break;
+      case 'r_weapon':
+      case 'rand_weapon':
+      case 'random_weapon':
+        res = apexWeaponCommands.randomWeapon();
+        break;
+      case 'r_ammo':
+      case 'rand_ammo':
+      case 'random_ammo':
+        res = apexWeaponCommands.randomWeaponAmmo();
+        break;
+      case 'r_weapon_type':
+      case 'rand_weapon_type':
+      case 'random_weapon_type':
+        res = apexWeaponCommands.randomWeaponType();
+        break;
+      case 'r_grenade':
+      case 'rand_grenade':
+      case 'random_grenade':
+        res = apexWeaponCommands.randomGrenade();
+        break;
+      case 'off_the_grid':
+        res = offTheGrid();
+        break;
+      case 'off_the_grid_uwu':
+      case 'off_the_gwid':
+        res = offTheGridUwu();
+        break;
+      case 'r':
+      case 'roll':
+      case 'dice':
+        res = diceCommands.diceRollCommand(args);
+        break;
+      case 'spin_the_wheel':
+      case 'spin_wheel':
+      case 'spin':
+        res = wheelOfApex.spinTheWheel();
+        break;
+      case 'list_wheel':
+        res = wheelOfApex.listWheel();
+        break;
+      case 'spin_the_wheel_nr':
+      case 'spin_wheel_nr':
+      case 'spin_nr':
+      case 'spinnr':
+        res = wheelOfApex.spinTheWheelNoReplacement();
+        break;
+      case 'list_wheel_nr':
+      case 'list_nr':
+        res = wheelOfApex.listWheelNoReplacement();
+        break;
+      case 'list_poi':
+      case 'l_poi':
+        res = apexMapCommands.getPoiList(args);
+        break;
+      case 'random_poi':
+      case 'r_poi':
+        res = apexMapCommands.getRandomPoi(args);
+        break;
+    }
+  } catch (e) {
+    res = e.message || e;
   }
 
   if (res) {
