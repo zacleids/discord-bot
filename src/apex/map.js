@@ -1,3 +1,4 @@
+const apexAPi = require('./api');
 const utils = require('../utils');
 
 const MAP_INFO = {
@@ -108,12 +109,12 @@ class Map {
   }
 
   getPoiList() {
-    return this.poiList.join('\n');
+    return this.getName() + ':\n' + this.poiList.join('\n');
   }
 
   getRandomPoi() {
     const num = utils.randomNumber(0, this.poiList.length) - 1;
-    return this.poiList[num];
+    return this.getName() + ': ' + this.poiList[num];
   }
 }
 
@@ -131,6 +132,7 @@ class MapCommands {
       kc: this.kingsCanyonMap,
       king: this.kingsCanyonMap,
       'kings canyon': this.kingsCanyonMap,
+      'king\'s canyon': this.kingsCanyonMap,
 
       // Olympus
       o: this.olympusMap,
@@ -146,24 +148,26 @@ class MapCommands {
       w: this.worldsEdgeMap,
       we: this.worldsEdgeMap,
       world: this.worldsEdgeMap,
-      'worlds edge': this.worldsEdgeMap
+      'worlds edge': this.worldsEdgeMap,
+      'world\'s edge': this.worldsEdgeMap
     };
   }
 
   /**
    *
    * @param {string[]} args
-   * @return {string}
+   * @return {Promise<string>}
    */
-  parseMapArgs(args) {
+  async parseMapArgs(args = []) {
     if (args.length === 0) {
-      throw new Error('Invalid input. please provide a valid map');
+      const map = await apexAPi.getCurrentMap();
+      args.push(map);
     }
 
     const map = args.join(' ').toLowerCase();
 
     if (!Object.keys(this.nameMappings).includes(map)) {
-      throw new Error('Invalid map');
+      throw new Error('Invalid map: ' + map);
     }
 
     return map;
@@ -172,10 +176,10 @@ class MapCommands {
   /**
    *
    * @param {string[]} args
-   * @return {string}
+   * @return {Promise<string>}
    */
-  getPoiList(args) {
-    const map = this.parseMapArgs(args);
+  async getPoiList(args) {
+    const map = await this.parseMapArgs(args);
 
     return this.nameMappings[map].getPoiList();
   }
@@ -183,10 +187,10 @@ class MapCommands {
   /**
    *
    * @param {string[]} args
-   * @return {string}
+   * @return {Promise<string>}
    */
-  getRandomPoi(args) {
-    const map = this.parseMapArgs(args);
+  async getRandomPoi(args) {
+    const map = await this.parseMapArgs(args);
 
     return this.nameMappings[map].getRandomPoi();
   }

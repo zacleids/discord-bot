@@ -19,7 +19,7 @@ const client = new Discord.Client({ intents: ['GUILDS', 'GUILD_MESSAGES'] });
 
 client.on('messageCreate', handleMessage);
 
-function handleMessage(message) {
+async function handleMessage(message) {
   console.log(message);
 
   if (message.author.bot) {return;}
@@ -102,7 +102,7 @@ function handleMessage(message) {
       case 'spin_the_wheel':
       case 'spin_wheel':
       case 'spin':
-        res = wheelOfApex.spinTheWheel();
+        res = await wheelOfApex.spinTheWheel();
         break;
       case 'list_wheel':
         res = wheelOfApex.listWheel();
@@ -111,7 +111,7 @@ function handleMessage(message) {
       case 'spin_wheel_nr':
       case 'spin_nr':
       case 'spinnr':
-        res = wheelOfApex.spinTheWheelNoReplacement();
+        res = await wheelOfApex.spinTheWheelNoReplacement();
         break;
       case 'list_wheel_nr':
       case 'list_nr':
@@ -119,11 +119,12 @@ function handleMessage(message) {
         break;
       case 'list_poi':
       case 'l_poi':
-        res = apexMapCommands.getPoiList(args);
+        res = await apexMapCommands.getPoiList(args);
         break;
       case 'random_poi':
+      case 'rand_poi':
       case 'r_poi':
-        res = apexMapCommands.getRandomPoi(args);
+        res = await apexMapCommands.getRandomPoi(args);
         break;
     }
   } catch (e) {
@@ -160,7 +161,8 @@ const commands = function() {
 !list_wheel - Lists the different modifications in the Wheel of Apex.
 !spin_the_wheel_nr/!spin_wheel_nr/!spin_nr/!spinnr: Spins the Wheel of Apex, generating a random game modification without replacement so that repeats do not occur until the list has been emptied. 
 !list_wheel_nr/!list_nr - Lists remaining modifications in the No Replacement Wheel of Apex.
-
+!list_poi/!l_poi - Lists the points of interest on a given map (can pass in the map like \`!l_poi kings canyon\`). You can also us the map initials
+!random_poi - Pick a random point of interest on a given map (can pass in the map like \`!r_poi kings canyon\`). If no map is provided it'll use the current map in rotation
 
 any command that has the word 'random' can also use 'rand' or 'r' instead
   `;

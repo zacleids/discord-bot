@@ -1,6 +1,7 @@
 const _ = require('lodash');
 
 const utils = require('../utils');
+const apexMapCommands = require('./map');
 const apexWeaponCommands = require('./weapon');
 const apexLegendCommands = require('./legend');
 
@@ -19,11 +20,11 @@ class WheelCommand {
     return this.text;
   }
 
-  run() {
+  async run() {
     let res = this.text;
 
     if (_.isFunction(this.func)) {
-      res += '\n' + this.func();
+      res += '\n' + await this.func();
     }
 
     return res;
@@ -50,24 +51,25 @@ class Wheel {
         new WheelCommand('Have to attack everyone you see once you land, no matter what. No running from fights.'),
         new WheelCommand('Can\'t loot from deathboxes'),
         new WheelCommand('Choose between the first 5 weapons you encounter, no other weapons are allowed'),
-        new WheelCommand('A person is designated as the lord. The other two members must follow the calls of the lord as well as say "yes milord." The squires must do their best to defend the lord.  The lord is designated randomly or by group agreement.')
+        new WheelCommand('A person is designated as the lord. The other two members must follow the calls of the lord as well as say "yes milord." The squires must do their best to defend the lord.  The lord is designated randomly or by group agreement.'),
+        new WheelCommand('You must land at a randomly chosen point of interest (!random_poi)', apexMapCommands.getRandomPoi.bind(apexMapCommands))
       ];
     this.apexModificationsNoReplacement = _.clone(this.apexGameModifications);
   }
 
-  spinTheWheel() {
+  async spinTheWheel() {
     const num = utils.randomNumber(0, this.apexGameModifications.length) - 1;
-    return this.apexGameModifications[num].run();
+    return await this.apexGameModifications[num].run();
   }
 
-  spinTheWheelTwice() {
+  async spinTheWheelTwice() {
     const listClone = _.clone(this.apexGameModifications);
     listClone.shift(); // we always know that spin twice is the 0th element
     const num1 = utils.randomNumber(0, listClone.length) - 1;
     const mod1 = listClone.splice(num1, 1)[0];
     const num2 = utils.randomNumber(0, listClone.length) - 1;
     const mod2 = listClone.splice(num2, 1)[0];
-    return `${mod1.run()}\n **AND**\n${mod2.run()}`;
+    return `${await mod1.run()}\n **AND**\n${await mod2.run()}`;
   }
 
   /**
@@ -90,7 +92,7 @@ class Wheel {
     return this.formatList('', this.apexGameModifications);
   }
 
-  spinTheWheelNoReplacement() {
+  async spinTheWheelNoReplacement() {
     const num = utils.randomNumber(0, this.apexModificationsNoReplacement.length) - 1;
     const modification = this.apexModificationsNoReplacement[num];
     this.apexModificationsNoReplacement.splice(num, 1);
@@ -101,7 +103,7 @@ class Wheel {
       preText = '[All Modifications drawn, Refilling Wheel]\n';
       this.apexModificationsNoReplacement = _.clone(this.apexGameModifications);
     }
-    return preText + modification.run();
+    return preText + await modification.run();
   }
 
   listWheelNoReplacement() {
