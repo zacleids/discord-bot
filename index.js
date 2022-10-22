@@ -9,6 +9,7 @@ const apexLegendCommands = require('./src/apex/legend');
 const apexMapCommands = require('./src/apex/map');
 const apexWeaponCommands = require('./src/apex/weapon');
 const wheelOfApex = require('./src/apex/wheel_of_apex');
+const coinCommands = require('./src/coin');
 const diceCommands = require('./src/dice');
 
 // https://www.digitalocean.com/community/tutorials/how-to-build-a-discord-bot-with-node-js
@@ -36,7 +37,7 @@ async function handleMessage(message) {
 
     switch (command) {
       case 'ping':
-        res = ping(message);
+        res = ping();
         break;
       case 'command':
       case 'commands':
@@ -46,11 +47,11 @@ async function handleMessage(message) {
         res = rules();
         break;
       case 'apex_night':
-        res = apexNight(message);
+        res = apexNight();
         break;
       case 'double_apex_night':
       case '2_apex_night':
-        res = doubleApexNight(message);
+        res = doubleApexNight();
         break;
       case 'r_legend':
       case 'rand_legend':
@@ -98,6 +99,16 @@ async function handleMessage(message) {
       case 'roll':
       case 'dice':
         res = diceCommands.diceRollCommand(args);
+        break;
+      case 'flip':
+      case 'coin':
+      case 'coin_flip':
+        res = coinCommands.coinFlip();
+        break;
+      case 'flip_n':
+      case 'coin_n':
+      case 'coin_flip_n':
+        res = coinCommands.coinFlipNTimes(args);
         break;
       case 'spin_the_wheel':
       case 'spin_wheel':
