@@ -178,3 +178,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 /.vs
+
+# a test file to call the functions locally
+test.js

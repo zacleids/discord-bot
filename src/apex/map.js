@@ -1,4 +1,4 @@
-const apexAPi = require('./api');
+const apexApi = require('./api');
 const utils = require('../utils');
 
 const MAP_INFO = {
@@ -160,7 +160,7 @@ class MapCommands {
    */
   async parseMapArgs(args = []) {
     if (args.length === 0) {
-      const map = await apexAPi.getCurrentMap();
+      const map = await apexApi.getCurrentMap();
       args.push(map);
     }
 
