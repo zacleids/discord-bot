@@ -89,6 +89,24 @@ const MAP_INFO = {
     'The Epicenter',
     'Survey Camp',
     'Climatizer'
+  ],
+  'Broken Moon': [
+    'Breaker Wharf',
+    'The Core',
+    'Alpha Base',
+    'Backup Atmo',
+    'Dry Gulch',
+    'Stasis Array',
+    'Eternal Gardens',
+    'Production Yard',
+    'South Promenade',
+    'North Promenade',
+    'The Divide',
+    'Terraformer',
+    'The Foundry',
+    'Cultivation',
+    'Atmostation',
+    'Bionomics'
   ]
 };
 
@@ -125,6 +143,7 @@ class MapCommands {
     this.olympusMap = new Map('Olympus', MAP_INFO['Olympus']);
     this.stormPointMap = new Map('Storm Point', MAP_INFO['Storm Point']);
     this.worldsEdgeMap = new Map('Worlds Edge', MAP_INFO['Worlds Edge']);
+    this.brokenMoonMap = new Map('Broken Moon', MAP_INFO['Broken Moon']);
 
     this.nameMappings = {
       // Kings Canyon
@@ -149,7 +168,13 @@ class MapCommands {
       we: this.worldsEdgeMap,
       world: this.worldsEdgeMap,
       'worlds edge': this.worldsEdgeMap,
-      'world\'s edge': this.worldsEdgeMap
+      'world\'s edge': this.worldsEdgeMap,
+
+      // Broken Moon
+      b: this.brokenMoonMap,
+      bm: this.brokenMoonMap,
+      broken: this.brokenMoonMap,
+      'broken moon': this.brokenMoonMap
     };
   }
 
