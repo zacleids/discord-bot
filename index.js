@@ -10,6 +10,7 @@ const apexMapCommands = require('./src/apex/map');
 const apexWeaponCommands = require('./src/apex/weapon');
 const wheelOfApex = require('./src/apex/wheel_of_apex');
 const coinCommands = require('./src/coin');
+const eightBallCommands = require('./src/eightBall');
 const diceCommands = require('./src/dice');
 
 // https://www.digitalocean.com/community/tutorials/how-to-build-a-discord-bot-with-node-js
@@ -117,6 +118,12 @@ async function handleMessage(message) {
       case 'coin_n':
       case 'coin_flip_n':
         res = coinCommands.coinFlipNTimes(args);
+        break;
+      case '8ball':
+      case 'ask':
+      case 'eight':
+      case 'ask_eight_ball':
+        res = eightBallCommands.eightBall();
         break;
       case 'spin_the_wheel':
       case 'spin_wheel':
