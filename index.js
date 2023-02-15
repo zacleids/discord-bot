@@ -68,6 +68,14 @@ async function handleMessage(message) {
       case 'random_team':
         res = apexLegendCommands.randomTeam();
         break;
+      case 'r_team_balanced':
+      case 'rand_team_balanced':
+      case 'random_team_balanced':
+      case 'r_team_b':
+      case 'rand_team_b':
+      case 'random_team_b':
+        res = apexLegendCommands.randomTeamBalanced();
+        break;
       case 'r_weapon':
       case 'rand_weapon':
       case 'random_weapon':
