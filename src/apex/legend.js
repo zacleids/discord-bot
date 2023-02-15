@@ -1,13 +1,5 @@
 const utils = require('../utils');
 
-// // const apexClasses = ['Offensive', 'Defensive', 'Recon', 'Support'];
-// const apexLegendsCharacters = {
-//   Offensive: ['Bangalore', 'Wraith', 'Mirage', 'Octane', 'Revenant', 'Horizon', 'Fuse', 'Ash', 'Mad Maggie'],
-//   Defensive: ['Gibraltar', 'Caustic', 'Wattson', 'Rampart', 'Newcastle', 'Catalyst'],
-//   Recon: ['Bloodhound', 'Pathfinder', 'Crypto', 'Valkyrie', 'Seer', 'Vantage'],
-//   Support: ['Lifeline', 'Loba']
-// };
-
 // const apexClasses = ['Assault', 'Skirmisher', 'Recon', 'Controller', 'Support'];
 const apexLegendsCharacters = {
   Assault: ['Ash', 'Fuse', 'Mad Maggie', 'Bangalore', 'Revenant'],
