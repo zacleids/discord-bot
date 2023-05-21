@@ -20,13 +20,13 @@ const randomWeaponType = function() {
 };
 
 const apexWeaponsByAmmo = {
-  Light: ['R-301 Carbine', 'Alternator SMG', 'R-99 SMG', 'P2020', 'C.A.R. SMG', 'G7 Scout', 'M600 Spitfire'],
+  Light: ['R-301 Carbine', 'Alternator SMG', 'R-99 SMG', 'P2020', 'C.A.R. SMG', 'G7 Scout', 'M600 Spitfire', 'RE-45 Auto'],
   Heavy: ['VK-47 Flatline', 'Rampage LMG', 'Prowler Burst PDW', '30-30 Repeater', 'C.A.R. SMG'],
-  Energy: ['Volt SMG', 'HAVOC Rifle', 'Devotion LMG', 'L-STAR EMG', 'Triple Take', 'Nemesis'],
+  Energy: ['Volt SMG', 'HAVOC Rifle', 'Devotion LMG', 'Triple Take', 'Nemesis'],
   Shotgun: ['Mastiff Shotgun', 'EVA-8 Auto', 'Mozambique Shotgun', 'Peacekeeper'],
   Sniper: ['Charge Rifle', 'Longbow DMR', 'Sentinel', 'Wingman'],
   // Arrows: ['Bocek Compound Bow'], //TODO: un-comment when bow returns to floor
-  Red: ['Kraber .50-Cal Sniper', 'RE-45 Auto', 'Bocek Compound Bow', 'Hemlok Burst AR']
+  Red: ['Kraber .50-Cal Sniper', 'L-STAR EMG', 'Bocek Compound Bow', 'Hemlok Burst AR']
 };
 const apexAmmoTypes = Object.keys(apexWeaponsByAmmo);
 
